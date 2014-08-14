@@ -10,6 +10,8 @@
 #include <stdio.h>
 #include <tchar.h>
 
-#include <time.h> // timeGetTime()
+#include <windows.h> 
+#include <mmsystem.h> // timeGetTime() 
+#pragma comment (lib, "winmm.lib")
 
 // TODO: プログラムに必要な追加ヘッダーをここで参照してください。
