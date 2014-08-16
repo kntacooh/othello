@@ -10,11 +10,11 @@
 #include <stdio.h>
 #include <tchar.h>
 
-#include <windows.h> // timeGetTime()
+#include <windows.h> // タイマー系の関数
 #include <mmsystem.h>
 #pragma comment (lib, "winmm.lib")
 
 // DXライブラリ
-#include "DxLib.h" // GetHitKeyStateAll() 
+//#include "DxLib.h" // GetHitKeyStateAll() (※使わない方向で)
 
 // TODO: プログラムに必要な追加ヘッダーをここで参照してください。

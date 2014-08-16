@@ -11,7 +11,7 @@ void PumpMessage(); //(http://codezine.jp/article/detail/5332より)
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	//if (DxLib_Init() == -1) return -1; // DXライブラリの初期化処理
+	//if (DxLib_Init() == -1) return -1; // DXライブラリの初期化処理(※使わない方向で)
 	
 	//CheckClock();
 	CheckInputingInRealTime();
@@ -56,6 +56,8 @@ void CheckInputingInRealTime()
 	while (true)
 	{
 		if (GetKeyState(VK_SPACE) & 0x80) break;
+		//if (GetKeyState('A') & 0x80) break; // Aキー
+		//if (GetKeyState(0x0D) & 0x80) break; // Enterキー
 		loopStart = timeGetTime();
 		if (GetKeyboardState((PBYTE)&keyState) == 0)
 		{
@@ -69,7 +71,9 @@ void CheckInputingInRealTime()
 			if ((keyState[i] & 0x80) != (keyStateBefore[i] & 0x80))
 			{
 				keyStateBefore[i] = keyState[i];
-				printf_s("キーコード:%d\t%dms\n", i, checkingTime);
+				if (keyState[i] & 0x80) printf_s("↓\t");
+				else printf_s("\t↑");
+				printf_s("\tNo: %3d (0x%02x)\t\t[Time:%2dms]\n", i, i, checkingTime);
 			}
 		}
 
